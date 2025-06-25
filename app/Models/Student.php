@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Student extends Model
 {
     use HasFactory;
@@ -15,6 +16,20 @@ class Student extends Model
         'phone',
         'email',
         'birth',
-        'city_id'
+        'city_id',
+        'user_id'
     ];
+
+    public function city() {
+        return $this->belongsTo(City::class);
+    }
+
+    public function articles() {
+        return $this->hasMany(Article::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
