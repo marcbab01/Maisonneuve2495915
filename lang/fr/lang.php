@@ -34,6 +34,23 @@ return [
 
     //Page New Student
     "add_student" => "Ajouter un étudiant",
-    "student_name" => "Nom Complet"
+    "student_name" => "Nom Complet",
 
+    //Article
+    "create_article" => "Créer un article",
+    "validation_error" => "Erreurs de Validation",
+    "new_article" => "Nouvel Article",
+    "article_title" => "Titre de l'article",
+    "article_content" => "Contenu de l'article",
+    "article_publish" => "Publier",
+    "article_author" => "Auteur",
+    "article_date" => "Publié le",
+    "article_empty" => "Aucun article disponible",
+
+    //User
+    "edit_user_title" => "Modifier l'utilisateur",
+    "user_name" => "Nom",
+    "edit_user_btn" => "Modifier",
+    "user_create" => "Créer un compte",
+    "subscription" => "Incription"
 ];

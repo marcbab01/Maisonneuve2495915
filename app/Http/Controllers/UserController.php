@@ -69,7 +69,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        return view('user.edit', ['user' => $user]);
     }
 
     /**
@@ -77,7 +77,15 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users|exists:students,email',
+        ]);
+
+        $user->update([
+            'name' =>$request->name,
+            'email' => $request->email,
+        ]);
     }
 
     /**
@@ -85,6 +93,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->route('user.index')->with('succes', "Utilisateur supprimé avec succès!");
     }
 }

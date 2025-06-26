@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Dompdf\Dompdf;
 
 class ArticleController extends Controller
 {
@@ -60,7 +61,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        return view('article.show', ['article' => $article]);
     }
 
     /**
@@ -68,7 +69,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+        return view('article.edit', ['article' => $article]);
     }
 
     /**
@@ -76,7 +77,17 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string|min:10|max:5000',
+        ]);
+
+        $article = Article::create([
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('article.show', $article->id)->with('success', 'Votre Article a été Modifié avec succès!');
     }
 
     /**
@@ -84,6 +95,18 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+
+                return redirect()->route('article.index')->with('success', 'Article supprimé avec succès!');
+
+    }
+
+    public function pdf(Article $article)
+    {
+        $pdf = new Dompdf();
+        $pdf->setPaper('letter', 'portrait');
+        $pdf->loadHTML(view('article.show-pdf', ["article" => $article]));
+        $pdf->render();
+        return $pdf->stream('article.pdf');
     }
 }

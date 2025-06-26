@@ -47,6 +47,7 @@ Route::post('/login', [AuthController::class, 'store'])->name('login.store');
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout', [AuthController::class, 'destroy'])->name('logout');
     Route::get('/edit/user/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/edit/user/{user}', [UserController::class], 'update')->name('user.update');
 
     Route::get('/create/article', [ArticleController::class, 'create'])->name('article.create');
     Route::post('/create/article', [ArticleController::class, 'store'])->name('article.store');
@@ -58,6 +59,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/articles', [ArticleController::class, 'index'])->name('article.index');
+Route::get('/article/{article}', [ArticleController::class, 'show'])->name('article.show');
 
 Route::get('/lang/{locale}', [SetLocalController::class, 'index'])->name('lang');
 

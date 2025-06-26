@@ -33,5 +33,23 @@ return [
 
     //Page New Student
     "add_student" => "Add a Student",
-    "student_name" => "Full Name"
+    "student_name" => "Full Name",
+
+    //Article
+    "create_article" => "Create an Article",
+    "validation_error" => "Validation Error",
+    "new_article" => "New Article",
+    "article_title" => "Title",
+    "article_content" => "Content",
+    "article_publish" => "Publish",
+    "article_author" => "Author",
+    "article_date" => "Publish",
+    "article_empty" => "No article available",
+
+    //User
+    "edit_user_title" => "Modify user",
+    "user_name" => "Name",
+    "edit_user_btn" => "Modify",
+    "user_create" => "Create Account",
+    "subscription" => "Subscription"
 ];

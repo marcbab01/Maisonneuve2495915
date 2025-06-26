@@ -16,14 +16,19 @@
                         <p>{{ $article->content }}</p>
                         <hr>
                         <small>
-                            <strong>Auteur :</strong> {{ $article->user->name ?? 'Anonyme' }}<br>
-                            <strong>Publié le :</strong> {{ $article->created_at->format('d/m/Y') }}
+                            <strong>@lang('lang.article_author') :</strong> {{ $article->user->name ?? 'Anonyme' }}<br>
+                            <strong>@lang('lang.article_date') :</strong> {{ $article->created_at->format('d/m/Y') }}
                         </small>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <div class="d-flex justify-content-end">
+                            <a href="{{ route('article.show', $article->id) }}" class="btn btn-sm btn-outline-success">View</a>
+                        </div>
                     </div>
                 </div>
             </div>
         @empty
-            <div class="alert alert-danger mt-4">Aucun article disponible.</div>
+            <div class="alert alert-danger mt-4">@lang('lang.article_empty').</div>
         @endforelse
     </div>
 
