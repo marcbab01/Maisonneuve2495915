@@ -48,3 +48,5 @@ Base de données: MySQL
 Frontend: Blade + Bootstrap (ou Tailwind CSS)
 
 Stockage: Système de fichiers Laravel avec public disk
+
+Lien GitHub: https://github.com/marcbab01/Maisonneuve2495915/tree/tp2
